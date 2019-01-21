@@ -32,7 +32,14 @@ AllowedScopes = { "api1" }
         {
             return new List<ApiResource>
 {
-new ApiResource("api1", "My API")
+new ApiResource("api1", "My API")  {
+            ApiSecrets =
+            {
+                new Secret("secret".Sha512(), "ITSM_API Secret")
+
+            },
+            UserClaims = { "role", "user" }
+        }
 };
         }
 

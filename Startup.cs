@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using IdentityServer4;
+using IdentityServer4.AccessTokenValidation;
 
 namespace authserver
 {
@@ -32,7 +34,14 @@ namespace authserver
             });
             services.AddIdentityServer().AddDeveloperSigningCredential()
                 .AddInMemoryApiResources(Config.GetApiResources()).AddInMemoryClients(Config.GetClients());
+            services.AddAuthentication("Bearer")
+.AddIdentityServerAuthentication(options =>
+  {
+      options.Authority = "http://localhost:5000";
+      options.RequireHttpsMetadata = false;
 
+      options.ApiName = "api1";
+  });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -48,11 +57,12 @@ namespace authserver
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+           
             app.UseIdentityServer();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+         
             app.UseMvc();
         }
     }
