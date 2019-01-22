@@ -62,3 +62,4 @@ C:\Users\berkin1\Desktop\identityserver4\obj\Debug\netcoreapp2.1\authserver.View
 C:\Users\berkin1\Desktop\identityserver4\obj\Debug\netcoreapp2.1\authserver.dll
 C:\Users\berkin1\Desktop\identityserver4\obj\Debug\netcoreapp2.1\authserver.pdb
 C:\Users\berkin1\Desktop\identityserver4\obj\Debug\netcoreapp2.1\authserver.csproj.CopyComplete
+C:\Users\berkin1\Desktop\identityserver4\bin\Debug\netcoreapp2.1\Dockerfile
